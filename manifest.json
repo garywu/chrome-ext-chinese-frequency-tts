@@ -31,7 +31,7 @@
       "38": "icons/icon38.png"
     },
 
-    "default_title" : "Chinese Frequency Chrome Beta",
+    "default_title" : "Chinese Frequency TTS",
     "default_popup" : "popup.html"
   },
 
