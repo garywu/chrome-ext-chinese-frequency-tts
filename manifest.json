@@ -8,11 +8,10 @@
     "tts"
   ],
 
-  // content script container
   "content_scripts" : [
     {
     "matches" : [ "<all_urls>" ],
-    // order is not relevant, due to hoisting
+
     "js" : [
       "src/IdxExtraPinyin.js", "src/IdxHanyuPinyinMicro.js",
       "src/ChineseFrequency.js", "ext.js"
