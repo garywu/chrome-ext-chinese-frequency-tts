@@ -1,0 +1,48 @@
+{
+  "name" : "Chinese Frequency Chrome Beta",
+  "version" : "0.8.58",
+  "version_name" : "0.8.58 (pffy.cloud.tortellini)",
+  "description" : "Count Chinese text. Hear Chinese text.",
+
+  "permissions": [
+    "tts"
+  ],
+
+  // content script container
+  "content_scripts" : [
+    {
+    "matches" : [ "<all_urls>" ],
+    // order is not relevant, due to hoisting
+    "js" : [
+      "src/IdxExtraPinyin.js", "src/IdxHanyuPinyinMicro.js",
+      "src/ChineseFrequency.js", "ext.js"
+      ]
+    }
+  ],
+
+  "background" : {
+    "scripts" : ["eventpage.js"],
+    "persistent" : false
+  },
+
+  "browser_action" :
+  {
+    "default_icon" : {
+      "19": "icons/icon19.png",
+      "38": "icons/icon38.png"
+    },
+
+    "default_title" : "Chinese Frequency Chrome Beta",
+    "default_popup" : "popup.html"
+  },
+
+
+  "icons" : {
+    "19" : "icons/icon19.png",
+    "38" : "icons/icon38.png",
+    "48" : "icons/icon48.png",
+    "128" : "icons/icon128.png"
+  },
+
+  "manifest_version" : 2
+}

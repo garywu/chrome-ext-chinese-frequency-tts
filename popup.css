@@ -1,0 +1,65 @@
+body {
+  font-family: "Segoe UI", "Lucida Grande", Tahoma, sans-serif;
+  font-size: 10pt;
+}
+#status {
+  /* avoid an excessively wide status text */
+  white-space: pre;
+  overflow: hidden;
+  max-width: 350px;
+  min-width: 200px;
+}
+
+#title {
+  font-weight: bold;
+  text-align: right;
+  font-size: 14pt;
+}
+
+#subtitle {
+  font-size: 10pt;
+  color: silver;
+}
+
+#freqlist{
+  min-width: 200px;
+  max-width: 250px;
+  width: 150px;
+}
+
+.freq, .num {
+  text-align: right;
+}
+
+.num {
+  color: lightgray;
+}
+
+.kaiti, .hztts {
+  font-family: "WenQuanYi Micro Hei", "UKai", "STKaiTi", "KaiTi";
+  font-size: 24pt;
+}
+
+.hztts {
+  color: navy;
+  text-decoration: none;
+  padding: 2px;
+}
+
+.hztts:hover {
+  color: red;
+  background-color: yellow;
+}
+
+#footer, #topline {
+  font-size: 8pt;
+  color: lightgray;
+}
+
+#footer a, #topline a {
+  color: lightgray;
+}
+
+#footer a:hover, #topline a:hover {
+  color: gray;
+}
