@@ -29,7 +29,7 @@
  * ChineseFrequency.js
  *  + Counts Chinese text. Creates a list of frequency counts.
  *
- * @version 0.1
+ * @version 0.2
  * @license http://unlicense.org/ The Unlicense
  * @updated 2015-04-29
  * @author  https://github.com/pffy/ The Pffy Authors
@@ -166,6 +166,11 @@ var ChineseFrequency = function() {
       return _metaProcessed;
     },
 
+    // Returns number of rows processed
+    getTotalRows: function () {
+      return this.getTotalProcessed();
+    },
+
     // Returns count summary text
     getCountSummary: function () {
       return _summary;
@@ -176,11 +181,17 @@ var ChineseFrequency = function() {
       return _input;
     },
 
+    // Returns true if any text was processed; false, otherwise.
     hasList: function() {
       return _isListAvailable;
     },
 
-    // Returns this object. Sets the text input.
+    // Returns true if any rows processed; false, otherwise.
+    hasRows: function() {
+      return this.hasList();
+    },
+
+    // Returns this object. Sets the text input and processes known text.
     setInput: function(str) {
 
       _metaTotal = str.length;
@@ -190,15 +201,6 @@ var ChineseFrequency = function() {
       _metaHanzi = str.length;
 
       _metaRemoved = _metaTotal - _metaHanzi;
-
-      if(_metaHanzi > 0) {
-        _isListAvailable = true;
-      } else {
-        // nothing to list
-        _metaUnique = 0;
-        _metaProcessed = 0;
-        return false;
-      }
 
       var arr = _input.split('');
       arr = _unique(arr);
@@ -236,6 +238,16 @@ var ChineseFrequency = function() {
       }
 
       _metaProcessed = numProcessed;
+
+      if(_metaProcessed > 0) {
+        _isListAvailable = true;
+      } else {
+        _summary = '',
+        _dataRange = [],
+        _csvList = '';
+        return this;
+      }
+
 
       bigc.sort(_desc);
 
