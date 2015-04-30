@@ -26,11 +26,11 @@
  */
 
 /**
- * print.js
+ * print.js (handles print view page actions)
  *
- * @version 0.8.58 (pffy.cloud.tortellini)
+ * @version 5.1 (pffy.cloud.tortellini)
  * @license http://unlicense.org/ The Unlicense
- * @updated 2015-04-29
+ * @updated 2015-04-30
  * @author  https://github.com/pffy/ The Pffy Authors
  * @link    https://github.com/pffy/chrome-chinese-frequency-tts
  *

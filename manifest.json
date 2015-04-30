@@ -1,10 +1,12 @@
 {
-  "name" : "Chinese Frequency TTS",
-  "version" : "0.8.58",
-  "version_name" : "0.8.58 (pffy.cloud.tortellini)",
+  "name" : "Chinese Frequency Text-to-Speech",
+  "short_name" : "Chinese Frequency TTS",
+  "version" : "5.1",
+  "version_name" : "5.1 (pffy.cloud.tortellini)",
   "description" : "Count Chinese text. Hear Chinese text.",
 
   "permissions": [
+    "tabs",
     "tts"
   ],
 

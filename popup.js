@@ -26,11 +26,11 @@
  */
 
 /**
- * popup.js
+ * popup.js (popup page for browser action)
  *
- * @version 0.8.58 (pffy.cloud.tortellini)
+ * @version 5.1 (pffy.cloud.tortellini)
  * @license http://unlicense.org/ The Unlicense
- * @updated 2015-04-29
+ * @updated 2015-04-30
  * @author  https://github.com/pffy/ The Pffy Authors
  * @link    https://github.com/pffy/chrome-chinese-frequency-tts
  *
@@ -52,7 +52,26 @@ function buildOutput(obj) {
   var status = '';
 
   status = '<div id="title">Chinese Frequency List</div>';
-  status += '<div id="subtitle">Click characters for sound.</div><br/>';
+  status += '<div id="subtitle">Click Chinese characters for sound.</div>';
+
+  var summary = '<table id="summary">';
+
+    summary += '<tr><td class="statlabel">Total Characters</td>'
+      + '<td class="stat">: ' + obj.total + '</td></tr>';
+
+    summary += '<tr><td class="statlabel">~ Removed</td>'
+      + '<td class="stat">: ' + obj.removed + '</td></tr>';
+
+    summary += '<tr><td class="statlabel">Chinese Characters</td>'
+      + '<td class="stat">: ' + obj.hanzi + '</td></tr>';
+
+    summary += '<tr><td class="statlabel">~ Unique</td>'
+      + '<td class="stat">: ' + obj.uniq + '</td></tr>';
+
+    summary += '<tr><td class="statlabel">~ Processed</td>'
+      + '<td class="stat">: ' + obj.rows + '</td></tr>';
+
+    summary += '</table>';
 
   var html = '<table id="freqlist">';
   for(var i = 0; i < data.length; i++) {
@@ -68,7 +87,7 @@ function buildOutput(obj) {
 
   html += '</table>';
 
-  status += html;
+  status += summary + html;
   document.getElementById('status').innerHTML = status;
 
   return true;
@@ -136,10 +155,10 @@ document.onclick = function(e) {
 // Handles onload
 document.addEventListener('DOMContentLoaded', function() {
   chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
-    chrome.tabs.sendMessage(tabs[0].id, {mode: 'obj'}, function(response){
+    chrome.tabs.sendMessage(tabs[0].id, {mode: 'derp'}, function(response){
       if(response.hasRows) {
         buildOutput(response);
-        chrome.browserAction.setBadgeText({ text: '' + response.rows,
+        chrome.browserAction.setBadgeText({text: '' + response.rows,
           tabId: tabs[0].id });
       } else {
         gotNothing();

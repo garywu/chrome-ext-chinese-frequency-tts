@@ -26,11 +26,11 @@
  */
 
 /**
- * ext.js
+ * ext.js (content script to access ChineseFrequency object and shared DOM)
  *
- * @version 0.8.58 (pffy.cloud.tortellini)
+ * @version 5.1 (pffy.cloud.tortellini)
  * @license http://unlicense.org/ The Unlicense
- * @updated 2015-04-29
+ * @updated 2015-04-30
  * @author  https://github.com/pffy/ The Pffy Authors
  * @link    https://github.com/pffy/chrome-chinese-frequency-tts
  *
@@ -52,18 +52,6 @@ obj = {
 
 chrome.runtime.onMessage.addListener(
   function(request, sender, sendResponse) {
-
-    switch(request.mode) {
-      case 'data':
-        sendResponse(obj.data);
-        break;
-      case 'obj':
-        sendResponse(obj);
-        break;
-      default:
-        // send back an empty response by default
-        sendResponse({});
-        break;
-    }
+    sendResponse(obj);
   });
 
